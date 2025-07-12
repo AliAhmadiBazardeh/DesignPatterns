@@ -1,4 +1,12 @@
 class Singleton():
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if Singleton._instance:
+            return Singleton._instance
+
+        Singleton._instance = super(Singleton, cls).__new__(cls)
+        return Singleton._instance
 
     def __init__(self):
         print('init has call ...')
@@ -20,3 +28,4 @@ print(id(instance1))
 print(id(instance2))
 
 print(instance1 is instance2)
+
